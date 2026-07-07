@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: albania-guessr
+
+  # In-memory mode for MVP (no DB needed yet)
+  datasource:
+    url: jdbc:h2:mem:albaniaguessr;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+  # Redis config (ready for Phase 2)
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: albaniaguessr-dev-secret-key-that-should-be-at-least-256-bits-long-for-hs256
+    expiration-ms: 86400000  # 24 hours
+  game:
+    rounds-per-game: 5
+    max-score-per-round: 10000
+    max-score-per-game: 50000

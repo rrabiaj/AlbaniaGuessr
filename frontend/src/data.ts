@@ -5,28 +5,28 @@ export interface Location {
   lng: number;
   year: number;
   fact: string;
-  imageId: number;
+  imageUrl: string;
 }
 
 export const locations: Location[] = [
-  { id: 1, name: "Kalaja e Beratit", lat: 40.7058, lng: 19.9522, year: 1960, fact: "Kalaja e Beratit, një nga vendbanimet më të vjetra në Shqipëri", imageId: 1 },
-  { id: 2, name: "Kalaja e Gjirokastrës", lat: 40.0756, lng: 20.1389, year: 1985, fact: "Qytet muze, trashëgimi botërore e UNESCO-s", imageId: 2 },
-  { id: 3, name: "Sheshi Skënderbej", lat: 41.3275, lng: 19.8187, year: 1990, fact: "Zemra e Tiranës, sheshi më i madh në Shqipëri", imageId: 3 },
-  { id: 4, name: "Bunk'Art", lat: 41.3245, lng: 19.8208, year: 2015, fact: "Muze i fshehtë nëntokësor i epokës së komunizmit", imageId: 4 },
-  { id: 5, name: "Ura e Mesit", lat: 42.0683, lng: 19.5097, year: 1970, fact: "Ura e vjetër osmane mbi lumin Kir në Shkodër", imageId: 5 },
-  { id: 6, name: "Butrint", lat: 39.7450, lng: 20.0203, year: 1925, fact: "Një nga qytetet më të lashta në Mesdhe", imageId: 6 },
-  { id: 7, name: "Llogara Pass", lat: 40.1969, lng: 19.5917, year: 2005, fact: "Qafa e Llogarasë, 1027 m mbi nivelin e detit", imageId: 7 },
-  { id: 8, name: "Theth", lat: 42.3958, lng: 19.7750, year: 1975, fact: "Fshati i izoluar në Alpet Shqiptare, parajsë natyrale", imageId: 8 },
-  { id: 9, name: "Sarandë", lat: 39.8750, lng: 20.0050, year: 2010, fact: "Qyteti bregdetar i njohur për plazhet dhe jetën e natës", imageId: 9 },
-  { id: 10, name: "Kryekisha e Korçës", lat: 40.6167, lng: 20.7833, year: 2000, fact: "Katedralja 'Ringjallja e Krishtit', një nga më të mëdhatë në Shqipëri", imageId: 10 },
-  { id: 11, name: "Pogradec / Liqeni i Ohrit", lat: 40.9000, lng: 20.6542, year: 1980, fact: "Liqeni më i vjetër në Evropë, me ujë kristal", imageId: 11 },
-  { id: 12, name: "Kalaja e Krujës", lat: 41.5075, lng: 19.7936, year: 1955, fact: "Kalaja e Gjergj Kastriotit, heroit tonë kombëtar", imageId: 12 },
-  { id: 13, name: "Apollonia", lat: 40.7197, lng: 19.4733, year: 1930, fact: "Qytet i lashtë grek, një nga më të rëndësishmit në Illiri", imageId: 13 },
-  { id: 14, name: "Amfiteatri i Durrësit", lat: 41.3111, lng: 19.4450, year: 1965, fact: "Amfiteatri më i madh në Ballkan, shekulli II", imageId: 14 },
-  { id: 15, name: "Kalaja e Rozafës", lat: 42.0467, lng: 19.4931, year: 1972, fact: "Kalaja legjendare e Shkodrës me legjendën e Rozafës", imageId: 15 },
-  { id: 16, name: "Syri i Kaltër", lat: 39.9239, lng: 20.1928, year: 2018, fact: "Burim uji natyror me ngjyrë blu të thellë", imageId: 16 },
-  { id: 17, name: "Ishujt e Ksamilit", lat: 39.7694, lng: 19.9936, year: 2020, fact: "Ishuj në jug, plazhi më i famshëm i Rivierës Shqiptare", imageId: 17 },
-  { id: 18, name: "Porti i Vlorës", lat: 40.4600, lng: 19.4900, year: 1995, fact: "Porti i dytë më i madh në Shqipëri, hyrja në jug", imageId: 18 },
+  { id: 1, name: "Kalaja e Beratit", lat: 40.7058, lng: 19.9522, year: 1960, fact: "Kalaja e Beratit, një nga vendbanimet më të vjetra në Shqipëri", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 2, name: "Kalaja e Gjirokastrës", lat: 40.0756, lng: 20.1389, year: 1985, fact: "Qytet muze, trashëgimi botërore e UNESCO-s", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 3, name: "Sheshi Skënderbej", lat: 41.3275, lng: 19.8187, year: 1990, fact: "Zemra e Tiranës, sheshi më i madh në Shqipëri", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 4, name: "Bunk'Art", lat: 41.3245, lng: 19.8208, year: 2015, fact: "Muze i fshehtë nëntokësor i epokës së komunizmit", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 5, name: "Ura e Mesit", lat: 42.0683, lng: 19.5097, year: 1970, fact: "Ura e vjetër osmane mbi lumin Kir në Shkodër", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 6, name: "Butrint", lat: 39.7450, lng: 20.0203, year: 1925, fact: "Një nga qytetet më të lashta në Mesdhe", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 7, name: "Llogara Pass", lat: 40.1969, lng: 19.5917, year: 2005, fact: "Qafa e Llogarasë, 1027 m mbi nivelin e detit", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 8, name: "Theth", lat: 42.3958, lng: 19.7750, year: 1975, fact: "Fshati i izoluar në Alpet Shqiptare, parajsë natyrale", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 9, name: "Sarandë", lat: 39.8750, lng: 20.0050, year: 2010, fact: "Qyteti bregdetar i njohur për plazhet dhe jetën e natës", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 10, name: "Kryekisha e Korçës", lat: 40.6167, lng: 20.7833, year: 2000, fact: "Katedralja 'Ringjallja e Krishtit', një nga më të mëdhatë në Shqipëri", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 11, name: "Pogradec / Liqeni i Ohrit", lat: 40.9000, lng: 20.6542, year: 1980, fact: "Liqeni më i vjetër në Evropë, me ujë kristal", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 12, name: "Kalaja e Krujës", lat: 41.5075, lng: 19.7936, year: 1955, fact: "Kalaja e Gjergj Kastriotit, heroit tonë kombëtar", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 13, name: "Apollonia", lat: 40.7197, lng: 19.4733, year: 1930, fact: "Qytet i lashtë grek, një nga më të rëndësishmit në Illiri", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 14, name: "Amfiteatri i Durrësit", lat: 41.3111, lng: 19.4450, year: 1965, fact: "Amfiteatri më i madh në Ballkan, shekulli II", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 15, name: "Kalaja e Rozafës", lat: 42.0467, lng: 19.4931, year: 1972, fact: "Kalaja legjendare e Shkodrës me legjendën e Rozafës", imageUrl: "https://images.unsplash.com/photo-1569921059157-4a1ac2d62b4a?w=800&q=80" },
+  { id: 16, name: "Syri i Kaltër", lat: 39.9239, lng: 20.1928, year: 2018, fact: "Burim uji natyror me ngjyrë blu të thellë", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 17, name: "Ishujt e Ksamilit", lat: 39.7694, lng: 19.9936, year: 2020, fact: "Ishuj në jug, plazhi më i famshëm i Rivierës Shqiptare", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
+  { id: 18, name: "Porti i Vlorës", lat: 40.4600, lng: 19.4900, year: 1995, fact: "Porti i dytë më i madh në Shqipëri, hyrja në jug", imageUrl: "https://images.unsplash.com/photo-1592124549776-a7f0cd973c6a?w=800&q=80" },
 ];
 
 export function getDailySeed(): number {

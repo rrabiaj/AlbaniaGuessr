@@ -400,15 +400,19 @@ function App() {
           {/* Left: Image & Year */}
           <div className="lg:w-1/3 p-4 flex flex-col gap-4">
             <div className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
-              <div className="aspect-[4/3] bg-gray-800 flex items-center justify-center">
-                <div className="text-center p-4">
-                  <span className="text-6xl block mb-2">
-                    {["🏰", "🏛️", "🏙️", "🏘️", "🌉", "🏟️", "🏔️", "🌄", "🏖️", "⛪", "🌊", "🕌", "🏗️", "🎭", "🏯", "💙", "🏝️", "⛵"][loc.id - 1] || "📸"}
-                  </span>
-                  <p className="text-gray-400 text-sm">Raundi {currentRound + 1}/5</p>
-                  <p className="text-gray-500 text-xs mt-1">Ku dhe kur është kjo foto?</p>
+              <div className="relative w-full h-48 sm:h-64 bg-gray-800">
+                  <img
+                    src={loc.imageUrl}
+                    alt={loc.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent" />
+                  <div className="absolute bottom-3 left-3">
+                    <p className="text-white text-sm font-bold">Raundi {currentRound + 1}/5</p>
+                    <p className="text-gray-300 text-xs">Ku dhe kur është kjo foto?</p>
+                  </div>
                 </div>
-              </div>
             </div>
 
             {/* Year slider */}
