@@ -1,48 +1,60 @@
-const API_BASE = window.location.hostname === 'localhost' 
-  ? 'http://localhost:8080/api' 
-  : '/api';
+const API = '/api';
 
-export async function startGame(mode: 'classic' | 'daily'): Promise<string> {
-  const res = await fetch(`${API_BASE}/games/start`, {
+async function apiFetch(path: string, options?: RequestInit) {
+  try {
+    const res = await fetch(`${API}${path}`, {
+      headers: { 'Content-Type': 'application/json' },
+      ...options,
+    });
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    return await res.json();
+  } catch (e) {
+    console.warn(`API call failed (${path}), using mock:`, e);
+    return null;
+  }
+}
+
+export async function apiStartGame(mode: string) {
+  return apiFetch('/games/start', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ mode }),
   });
-  const data = await res.json();
-  return data.sessionId;
 }
 
-export async function getRound(sessionId: string, roundNum: number) {
-  const res = await fetch(`${API_BASE}/games/${sessionId}/round/${roundNum}`);
-  return res.json();
+export async function apiGetRound(sessionId: string, roundNum: number) {
+  return apiFetch(`/games/${sessionId}/round/${roundNum}`);
 }
 
-export async function submitGuess(
-  sessionId: string, 
-  roundNum: number, 
-  lat: number, 
-  lng: number, 
+export async function apiSubmitGuess(
+  sessionId: string,
+  roundNum: number,
+  lat: number,
+  lng: number,
   year: number
 ) {
-  const res = await fetch(`${API_BASE}/games/${sessionId}/round/${roundNum}/guess`, {
+  return apiFetch(`/games/${sessionId}/round/${roundNum}/guess`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ lat, lng, year }),
   });
-  return res.json();
 }
 
-export async function getGameSummary(sessionId: string) {
-  const res = await fetch(`${API_BASE}/games/${sessionId}/summary`);
-  return res.json();
+export async function apiGetSummary(sessionId: string) {
+  return apiFetch(`/games/${sessionId}/summary`);
 }
 
-export async function getDailyChallenge() {
-  const res = await fetch(`${API_BASE}/daily-challenge`);
-  return res.json();
+export async function apiGetDailyChallenge() {
+  return apiFetch('/daily-challenge');
 }
 
-export async function getLeaderboard(type: 'global' | 'daily') {
-  const res = await fetch(`${API_BASE}/leaderboard/${type}`);
-  return res.json();
+export async function apiGetLeaderboard(type: string) {
+  return apiFetch(`/leaderboard/${type}?limit=10`);
+}
+
+export async function apiCheckHealth() {
+  try {
+    const res = await fetch(`${API}/games/start`, { method: 'POST' });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }

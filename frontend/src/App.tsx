@@ -9,6 +9,7 @@ import {
   calcYearScore,
   generateShareText,
 } from "./data";
+import { apiStartGame, apiGetRound, apiSubmitGuess, apiGetSummary, apiCheckHealth } from "./services/api";
 
 // Fix Leaflet default icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -91,9 +92,38 @@ function App() {
   const [timerActive, setTimerActive] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [leaderboardTab, setLeaderboardTab] = useState<"global" | "daily">("global");
+  const [useBackend, setUseBackend] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
 
-  const startGame = useCallback((gameMode: GameMode) => {
+  const startGame = useCallback(async (gameMode: GameMode) => {
     setMode(gameMode);
+    
+    // Try backend first
+    const backendAvailable = useBackend || await apiCheckHealth();
+    if (backendAvailable) {
+      setUseBackend(true);
+      try {
+        const game = await apiStartGame(gameMode === "daily" ? "DAILY_CHALLENGE" : "CLASSIC");
+        if (game?.sessionId) {
+          setSessionId(game.sessionId);
+          setRounds([]); // Rounds loaded via API
+          setCurrentRound(0);
+          setScores([]);
+          setGuessLat(null);
+          setGuessLng(null);
+          setGuessYear(1990);
+          setShowResult(false);
+          setAnimatedScore(0);
+          setTimer(30);
+          setTimerActive(true);
+          setPage("play");
+          return;
+        }
+      } catch {}
+    }
+    setUseBackend(false);
+    
+    // Fallback to mock
     const locs = gameMode === "daily" ? getDailyLocations() : getRandomLocations(5);
     setRounds(locs);
     setCurrentRound(0);

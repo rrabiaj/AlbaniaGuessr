@@ -8,6 +8,12 @@ export default defineConfig({
     port: 3000,
     host: true,
     allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [react(), tailwindcss(), tsConfigPaths({ projects: ["./tsconfig.json"] })],
 });
