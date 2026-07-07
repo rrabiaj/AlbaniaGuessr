@@ -1,5 +1,7 @@
 package com.albaniaguessr.controller;
 
+import com.albaniaguessr.dto.request.LoginRequest;
+import com.albaniaguessr.dto.request.RegisterRequest;
 import com.albaniaguessr.dto.response.AuthResponse;
 import com.albaniaguessr.entity.User;
 import com.albaniaguessr.security.JwtTokenProvider;
@@ -88,8 +90,4 @@ public class AuthController {
                 .email(user.getEmail())
                 .build());
     }
-
-    // Inner request classes (avoid circular deps)
-    public record RegisterRequest(String username, String email, String password) {}
-    public record LoginRequest(String username, String password) {}
 }
