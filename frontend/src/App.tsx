@@ -9,7 +9,6 @@ import {
   calcYearScore,
   generateShareText,
 } from "./data";
-import { apiStartGame, apiGetRound, apiSubmitGuess, apiGetSummary, apiCheckHealth } from "./services/api";
 
 // Fix Leaflet default icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -89,36 +88,9 @@ function App() {
   const [playerName, setPlayerName] = useState("");
   const [showNameInput, setShowNameInput] = useState(false);
   const [leaderboardTab, setLeaderboardTab] = useState<"global" | "daily">("global");
-  const [useBackend, setUseBackend] = useState(false);
-  const [sessionId, setSessionId] = useState<string | null>(null);
 
-  const startGame = useCallback(async (gameMode: GameMode) => {
+  const startGame = useCallback((gameMode: GameMode) => {
     setMode(gameMode);
-    
-    // Try backend first
-    const backendAvailable = useBackend || await apiCheckHealth();
-    if (backendAvailable) {
-      setUseBackend(true);
-      try {
-        const game = await apiStartGame(gameMode === "daily" ? "DAILY_CHALLENGE" : "CLASSIC");
-        if (game?.sessionId) {
-          setSessionId(game.sessionId);
-          setRounds([]);
-          setCurrentRound(0);
-          setScores([]);
-          setGuessLat(null);
-          setGuessLng(null);
-          setGuessYear(1990);
-          setShowResult(false);
-          setAnimatedScore(0);
-          setPage("play");
-          return;
-        }
-      } catch {}
-    }
-    setUseBackend(false);
-    
-    // Fallback to mock
     const locs = gameMode === "daily" ? getDailyLocations() : getRandomLocations(5);
     setRounds(locs);
     setCurrentRound(0);
@@ -130,7 +102,8 @@ function App() {
     setAnimatedScore(0);
     setPage("play");
   }, []);
-    const handleMapClick = useCallback((lat: number, lng: number) => {
+
+  const handleMapClick = useCallback((lat: number, lng: number) => {
     setGuessLat(lat);
     setGuessLng(lng);
   }, []);
