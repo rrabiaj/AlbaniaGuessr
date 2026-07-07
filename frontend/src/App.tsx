@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { MapContainer, TileLayer, useMapEvents, Marker, Polyline, Popup } from "react-leaflet";
 import L from "leaflet";
 import {
@@ -88,9 +88,6 @@ function App() {
   const [animatedScore, setAnimatedScore] = useState(0);
   const [playerName, setPlayerName] = useState("");
   const [showNameInput, setShowNameInput] = useState(false);
-  const [timer, setTimer] = useState(30);
-  const [timerActive, setTimerActive] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [leaderboardTab, setLeaderboardTab] = useState<"global" | "daily">("global");
   const [useBackend, setUseBackend] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -106,7 +103,7 @@ function App() {
         const game = await apiStartGame(gameMode === "daily" ? "DAILY_CHALLENGE" : "CLASSIC");
         if (game?.sessionId) {
           setSessionId(game.sessionId);
-          setRounds([]); // Rounds loaded via API
+          setRounds([]);
           setCurrentRound(0);
           setScores([]);
           setGuessLat(null);
@@ -114,8 +111,6 @@ function App() {
           setGuessYear(1990);
           setShowResult(false);
           setAnimatedScore(0);
-          setTimer(30);
-          setTimerActive(true);
           setPage("play");
           return;
         }
@@ -133,31 +128,15 @@ function App() {
     setGuessYear(1990);
     setShowResult(false);
     setAnimatedScore(0);
-    setTimer(30);
-    setTimerActive(true);
     setPage("play");
   }, []);
-
-  useEffect(() => {
-    if (timerActive && timer > 0) {
-      timerRef.current = setInterval(() => setTimer((t) => t - 1), 1000);
-    } else if (timer === 0 && timerActive) {
-      handleSubmitGuess();
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [timerActive, timer]);
-
-  const handleMapClick = useCallback((lat: number, lng: number) => {
+    const handleMapClick = useCallback((lat: number, lng: number) => {
     setGuessLat(lat);
     setGuessLng(lng);
   }, []);
 
   const handleSubmitGuess = useCallback(() => {
     if (guessLat === null || guessLng === null) return;
-    setTimerActive(false);
-    if (timerRef.current) clearInterval(timerRef.current);
 
     const loc = rounds[currentRound];
     const mapScore = calcMapScore(guessLat, guessLng, loc.lat, loc.lng);
