@@ -373,27 +373,30 @@ function App() {
 
         <main className="flex-1 flex flex-col lg:flex-row">
           {/* Left: Image & Year */}
-          <div className="lg:w-1/3 p-4 flex flex-col gap-4">
-            <div className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
-              <div className="relative w-full h-48 sm:h-64 bg-gray-800">
-                  <img
-                    src={loc.imageUrl}
-                    alt={loc.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <p className="text-white text-sm font-bold">Raundi {currentRound + 1}/5</p>
-                    <p className="text-gray-300 text-xs">Ku dhe kur është kjo foto?</p>
-                  </div>
+          <div className="lg:w-1/2 p-4 flex flex-col gap-4">
+            <div className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-xl shadow-black/30">
+              <div className="relative w-full aspect-[4/3] bg-gray-800">
+                <img
+                  src={loc.imageUrl}
+                  alt="Foto e vendit"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white/80 text-sm font-medium tracking-wide uppercase">
+                    Raundi {currentRound + 1} nga 5
+                  </p>
+                  <p className="text-gray-400 text-xs mt-1">Gjej vendndodhjen dhe vitin e kësaj fotografie</p>
                 </div>
+              </div>
             </div>
 
             {/* Year slider */}
-            <div className="bg-gray-900 rounded-2xl p-4 border border-gray-800">
-              <label className="text-gray-400 text-xs uppercase tracking-wider">
-                Viti: <span className="text-white font-bold">{guessYear}</span>
+            <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-4 border border-gray-800">
+              <label className="text-gray-400 text-xs uppercase tracking-wider flex justify-between">
+                <span>Viti i fotografisë</span>
+                <span className="text-white font-bold text-lg">{guessYear}</span>
               </label>
               <input
                 type="range"
@@ -401,7 +404,7 @@ function App() {
                 max={2026}
                 value={guessYear}
                 onChange={(e) => setGuessYear(Number(e.target.value))}
-                className="w-full mt-2 accent-[#E3001B]"
+                className="w-full mt-2 accent-[#E3001B] h-2 rounded-full appearance-none bg-gray-700 cursor-pointer"
               />
               <div className="flex justify-between text-gray-600 text-xs mt-1">
                 <span>1920</span>
@@ -413,20 +416,20 @@ function App() {
             <button
               onClick={handleSubmitGuess}
               disabled={guessLat === null || guessLng === null}
-              className={`w-full font-bold py-4 rounded-xl text-lg transition-all ${
+              className={`w-full font-bold py-4 rounded-xl text-lg transition-all duration-300 ${
                 guessLat !== null && guessLng !== null
-                  ? "bg-[#E3001B] hover:bg-[#cc0018] text-white shadow-lg shadow-red-900/30"
+                  ? "bg-[#E3001B] hover:bg-[#cc0018] text-white shadow-lg shadow-red-900/30 hover:shadow-xl hover:shadow-red-900/40 hover:-translate-y-0.5"
                   : "bg-gray-800 text-gray-500 cursor-not-allowed"
               }`}
             >
               {guessLat !== null && guessLng !== null
                 ? "✅ Konfirmo Përgjigjen"
-                : "👆 Kliko Hartën"}
+                : "👆 Kliko në hartë për të zgjedhur vendndodhjen"}
             </button>
           </div>
 
           {/* Right: Map */}
-          <div className="lg:w-2/3 p-4">
+          <div className="lg:w-1/2 p-4">
             <div className="w-full h-full min-h-[50vh] rounded-2xl overflow-hidden border border-gray-800">
               <MapContainer
                 center={[41.1533, 20.1683]}
