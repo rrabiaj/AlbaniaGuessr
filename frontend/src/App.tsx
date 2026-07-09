@@ -81,12 +81,10 @@ function App() {
   const [currentRound, setCurrentRound] = useState(0);
   const [guessLat, setGuessLat] = useState<number | null>(null);
   const [guessLng, setGuessLng] = useState<number | null>(null);
-  const [guessYear, setGuessYear] = useState(1990);
+  const [guessYear, setGuessYear] = useState(1900);
   const [scores, setScores] = useState<RoundScore[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [animatedScore, setAnimatedScore] = useState(0);
-  const [playerName, setPlayerName] = useState("");
-  const [showNameInput, setShowNameInput] = useState(false);
   const [leaderboardTab, setLeaderboardTab] = useState<"global" | "daily">("global");
 
   const startGame = useCallback((gameMode: GameMode) => {
@@ -97,7 +95,7 @@ function App() {
     setScores([]);
     setGuessLat(null);
     setGuessLng(null);
-    setGuessYear(1990);
+    setGuessYear(1900);
     setShowResult(false);
     setAnimatedScore(0);
     setPage("play");
@@ -155,32 +153,13 @@ function App() {
       setCurrentRound((r) => r + 1);
       setGuessLat(null);
       setGuessLng(null);
-      setGuessYear(1990);
+      setGuessYear(1900);
       setShowResult(false);
       setAnimatedScore(0);
     } else {
-      setShowNameInput(true);
+      setPage("result");
     }
   }, [currentRound]);
-
-  const finishGame = useCallback(() => {
-    const total = scores.reduce((s, r) => s + r.totalRound, 0);
-    if (playerName.trim()) {
-      const entry: LeaderboardEntry = {
-        name: playerName.trim(),
-        score: total,
-        date: new Date().toLocaleDateString("sq-AL"),
-      };
-      globalLeaderboard.push(entry);
-      globalLeaderboard.sort((a, b) => b.score - a.score);
-      if (mode === "daily") {
-        dailyLeaderboard.push(entry);
-        dailyLeaderboard.sort((a, b) => b.score - a.score);
-      }
-    }
-    setShowNameInput(false);
-    setPage("result");
-  }, [scores, playerName, mode]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -400,14 +379,14 @@ function App() {
               </label>
               <input
                 type="range"
-                min={1920}
+                min={1700}
                 max={2026}
                 value={guessYear}
                 onChange={(e) => setGuessYear(Number(e.target.value))}
                 className="w-full mt-2 accent-[#E3001B] h-2 rounded-full appearance-none bg-gray-700 cursor-pointer"
               />
               <div className="flex justify-between text-gray-600 text-xs mt-1">
-                <span>1920</span>
+                <span>1700</span>
                 <span>2026</span>
               </div>
             </div>
@@ -448,35 +427,6 @@ function App() {
             </div>
           </div>
         </main>
-      </div>
-    );
-  }
-
-  // NAME INPUT (transitional)
-  if (showNameInput) {
-    return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
-        <div className="bg-gray-900 rounded-2xl p-8 max-w-sm w-full border border-gray-800 text-center">
-          <span className="text-4xl block mb-4">🏆</span>
-          <h2 className="text-white text-2xl font-bold mb-2">Fantastike!</h2>
-          <p className="text-gray-400 mb-6">
-            Pikët e tua: <span className="text-white font-bold text-xl">{totalScore.toLocaleString()}</span>
-          </p>
-          <input
-            type="text"
-            value={playerName}
-            onChange={(e) => setPlayerName(e.target.value)}
-            placeholder="Emri yt (opsional)"
-            className="w-full bg-gray-800 text-white rounded-xl px-4 py-3 mb-4 border border-gray-700 focus:border-[#E3001B] outline-none"
-            onKeyDown={(e) => e.key === "Enter" && finishGame()}
-          />
-          <button
-            onClick={finishGame}
-            className="w-full bg-[#E3001B] hover:bg-[#cc0018] text-white font-bold py-3 rounded-xl transition-all"
-          >
-            Shiko Rezultatin
-          </button>
-        </div>
       </div>
     );
   }
