@@ -531,21 +531,24 @@ function App() {
             <MapContainer center={[41.1533, 20.1683]} zoom={7} className="w-full h-full" scrollWheelZoom={false}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {scores.map((s, i) => (
-                <div key={i}>
-                  <Marker position={[s.guessLat, s.guessLng]} icon={guessIcon}>
-                    <Popup>Raundi {i + 1}: Supozimi</Popup>
-                  </Marker>
-                  <Marker position={[s.location.lat, s.location.lng]} icon={correctIcon}>
-                    <Popup>Raundi {i + 1}: {s.location.name}</Popup>
-                  </Marker>
-                  <Polyline
-                    positions={[
-                      [s.guessLat, s.guessLng],
-                      [s.location.lat, s.location.lng],
-                    ]}
-                    pathOptions={{ color: "#E3001B", weight: 1.5, opacity: 0.5 }}
-                  />
-                </div>
+                <Marker key={`guess-${i}`} position={[s.guessLat, s.guessLng]} icon={guessIcon}>
+                  <Popup>Raundi {i + 1}: Supozimi</Popup>
+                </Marker>
+              ))}
+              {scores.map((s, i) => (
+                <Marker key={`correct-${i}`} position={[s.location.lat, s.location.lng]} icon={correctIcon}>
+                  <Popup>Raundi {i + 1}: {s.location.name}</Popup>
+                </Marker>
+              ))}
+              {scores.map((s, i) => (
+                <Polyline
+                  key={`line-${i}`}
+                  positions={[
+                    [s.guessLat, s.guessLng],
+                    [s.location.lat, s.location.lng],
+                  ]}
+                  pathOptions={{ color: "#E3001B", weight: 1.5, opacity: 0.5 }}
+                />
               ))}
             </MapContainer>
           </div>
