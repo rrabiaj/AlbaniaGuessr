@@ -158,8 +158,6 @@ function App() {
       setGuessYear(1990);
       setShowResult(false);
       setAnimatedScore(0);
-      setTimer(30);
-      setTimerActive(true);
     } else {
       setShowNameInput(true);
     }
@@ -362,11 +360,6 @@ function App() {
               <p className="text-gray-400 text-xs">Pikët totale</p>
               <p className="text-white font-bold">{totalScore.toLocaleString()}</p>
             </div>
-            {timerActive && (
-              <div className={`rounded-full px-3 py-1 text-sm font-bold ${timer <= 10 ? "bg-red-900 text-red-300" : "bg-gray-800 text-white"}`}>
-                {timer}s
-              </div>
-            )}
           </div>
         </header>
 
