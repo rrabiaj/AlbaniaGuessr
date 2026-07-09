@@ -8,98 +8,97 @@ export interface Location {
   imageUrl: string;
 }
 
-// Real photos from Unsplash via picsum.photos (reliable CDN)
-// Each location gets a unique seed for a consistent, real photo every time
+// FOTO REALE nga Wikimedia Commons — çdo vend ka foton e vet unike
 export const locations: Location[] = [
   {
     id: 1, name: "Kalaja e Beratit", lat: 40.7058, lng: 19.9522, year: 1960,
     fact: "Kalaja e Beratit, një nga vendbanimet më të vjetra në Shqipëri, me dritare karakteristike të mëdha", 
-    imageUrl: "https://picsum.photos/seed/berat-castle/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Berat_Castle_%28by_Pudelek%29_2.JPG"
   },
   {
     id: 2, name: "Kalaja e Gjirokastrës", lat: 40.0756, lng: 20.1389, year: 1985,
     fact: "Qytet muze, trashëgimi botërore e UNESCO-s, i njohur për arkitekturën e tij unike guri",
-    imageUrl: "https://picsum.photos/seed/gjirokaster-castle/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Gjirokast%C3%ABr_Castle_%28by_Pudelek%29_3.jpg"
   },
   {
     id: 3, name: "Sheshi Skënderbej", lat: 41.3275, lng: 19.8187, year: 1990,
     fact: "Zemra e Tiranës, sheshi më i madh në Shqipëri me statujën e heroit kombëtar",
-    imageUrl: "https://picsum.photos/seed/skenderbej-square/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/45/Monumento_a_Skanderbeg%2C_Tirana%2C_Albania%2C_2014-04-17%2C_DD_03.JPG"
   },
   {
     id: 4, name: "Bunk'Art", lat: 41.3245, lng: 19.8208, year: 2015,
     fact: "Muze i fshehtë nëntokësor i epokës së komunizmit, në Tiranë",
-    imageUrl: "https://picsum.photos/seed/bunkart-tirana/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Tirana_BunkArt_ClockTower_%28WPWTR16%29.JPG"
   },
   {
     id: 5, name: "Ura e Mesit", lat: 42.0683, lng: 19.5097, year: 1970,
     fact: "Ura e vjetër osmane mbi lumin Kir në Shkodër, shekulli i XVIII",
-    imageUrl: "https://picsum.photos/seed/ura-mesit/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Ura_e_Mesit%2C_Shkoder.jpg"
   },
   {
     id: 6, name: "Butrint", lat: 39.7450, lng: 20.0203, year: 1925,
     fact: "Një nga qytetet më të lashta në Mesdhe, trashëgimi botërore e UNESCO-s",
-    imageUrl: "https://picsum.photos/seed/butrint-albania/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Butrint_%28Buthrotum%29%2C_Albania_%28by_Pudelek%29_04_Triconch_Palace.jpg"
   },
   {
     id: 7, name: "Qafa e Llogarasë", lat: 40.1969, lng: 19.5917, year: 2005,
     fact: "Qafa e Llogarasë, 1027 m mbi nivelin e detit, me pamje spektakolare",
-    imageUrl: "https://picsum.photos/seed/llogara-pass/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Llogara_Viewing_platform_view.JPG"
   },
   {
     id: 8, name: "Theth", lat: 42.3958, lng: 19.7750, year: 1975,
     fact: "Fshati i izoluar në Alpet Shqiptare, parajsë natyrale me kulla guri",
-    imageUrl: "https://picsum.photos/seed/theth-valley/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/76/Kisha_e_Thethit_-_2018_%288%29.jpg"
   },
   {
     id: 9, name: "Sarandë", lat: 39.8750, lng: 20.0050, year: 2010,
     fact: "Qyteti bregdetar i njohur për plazhet dhe jetën e natës në jug të Shqipërisë",
-    imageUrl: "https://picsum.photos/seed/saranda-albania/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Saranda_Albania_3_-_beachfront_construction.jpg"
   },
   {
     id: 10, name: "Kryekisha e Korçës", lat: 40.6167, lng: 20.7833, year: 2000,
     fact: "Katedralja 'Ringjallja e Krishtit', një nga më të mëdhatë në Shqipëri",
-    imageUrl: "https://picsum.photos/seed/korca-cathedral/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Kor%C3%A7%C3%AB%2C_Albania_-_panoramio_%284%29.jpg"
   },
   {
     id: 11, name: "Pogradec / Liqeni i Ohrit", lat: 40.9000, lng: 20.6542, year: 1980,
     fact: "Liqeni më i vjetër në Evropë, me ujë kristal dhe plazhe të mrekullueshme",
-    imageUrl: "https://picsum.photos/seed/ohrid-lake/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Ohrid_Lake_in_Albania_-_bunker.JPG"
   },
   {
     id: 12, name: "Kalaja e Krujës", lat: 41.5075, lng: 19.7936, year: 1955,
     fact: "Kalaja e Gjergj Kastriotit Skënderbeut, heroit tonë kombëtar",
-    imageUrl: "https://picsum.photos/seed/kruja-castle/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/02/Castillo_de_Kruja%2C_Kruja%2C_Albania%2C_2014-04-18%2C_DD_18.JPG"
   },
   {
     id: 13, name: "Apollonia", lat: 40.7197, lng: 19.4733, year: 1930,
     fact: "Qytet i lashtë grek, një nga më të rëndësishmit në Iliri",
-    imageUrl: "https://picsum.photos/seed/apollonia-albania/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/35/Apollonia%2C_Albania_-_panorama_%28by_Pudelek%29.JPG"
   },
   {
     id: 14, name: "Amfiteatri i Durrësit", lat: 41.3111, lng: 19.4450, year: 1965,
     fact: "Amfiteatri më i madh në Ballkan, shekulli II pas Krishtit",
-    imageUrl: "https://picsum.photos/seed/durres-amphitheater/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Amfiteatr_rzymski_w_Durr%C3%ABs_1.jpg"
   },
   {
     id: 15, name: "Kalaja e Rozafës", lat: 42.0467, lng: 19.4931, year: 1972,
     fact: "Kalaja legjendare e Shkodrës me legjendën e Rozafës",
-    imageUrl: "https://picsum.photos/seed/rozafa-castle/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Castillo_de_Rozafa%2C_Shkodra%2C_Albania%2C_2014-04-18%2C_DD_11.JPG"
   },
   {
     id: 16, name: "Syri i Kaltër", lat: 39.9239, lng: 20.1928, year: 2018,
     fact: "Burim uji natyror me ngjyrë blu të thellë, 50 m thellësi",
-    imageUrl: "https://picsum.photos/seed/blue-eye-albania/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Blue_Eye_%28Syri_i_kalt%C3%ABr%29_03.JPG"
   },
   {
     id: 17, name: "Ishujt e Ksamilit", lat: 39.7694, lng: 19.9936, year: 2020,
     fact: "Ishuj në jug, plazhi më i famshëm i Rivierës Shqiptare",
-    imageUrl: "https://picsum.photos/seed/ksamil-islands/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/Ksamil-ksamil_islands.jpg"
   },
   {
     id: 18, name: "Porti i Vlorës", lat: 40.4600, lng: 19.4900, year: 1995,
     fact: "Porti i dytë më i madh në Shqipëri, hyrja në jug të vendit",
-    imageUrl: "https://picsum.photos/seed/vlora-harbor/800/600"
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/42/Vlora_harbor_Albania.jpg"
   },
 ];
 
